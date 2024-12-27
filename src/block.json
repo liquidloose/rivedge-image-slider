@@ -1,0 +1,25 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "rivedge/swiper-slider-block",
+	"version": "0.1.0",
+	"title": "Rivedge Swiper Slider Block",
+	"category": "widgets",
+	"icon": "smiley",
+	"description": "A Gutenberg wrapper for swiper.js",
+	"example": {},
+	"attributes": {
+		"slideCount": {
+			"type":"integer"
+		}
+	},
+	"supports": {
+		"html": false
+	},
+	"textdomain": "swiper-slider-block",
+	"editorScript": "file:./index.js",
+	"editorStyle": "file:./index.css",
+	"style": "file:./style-index.css",
+	"render": "file:./render.php",
+	"viewScript": "file:./view.js"
+}

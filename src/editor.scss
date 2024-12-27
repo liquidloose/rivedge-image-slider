@@ -1,0 +1,24 @@
+/**
+ * The following styles get applied inside the editor only.
+ *
+ * Replace them with your own styles or remove the file completely.
+ */
+
+
+
+
+.wp-block-rivedge-swiper-slider-block {
+	border: 1px dotted #f00;
+}
+
+section.swiper.swiper-initialized.swiper-horizontal {
+    height: 500px;
+	margin-bottom: -60px;
+}
+
+.swiper-button-prev,
+.swiper-button-next {
+    top: 91%;
+	color: black;
+}
+
