@@ -7,10 +7,38 @@
  *
  * Replace them with your own styles or remove the file completely.
  */
-.wp-block-rivedge-swiper-slider-block {
-  background-color: #21759b;
-  color: #fff;
-  padding: 2px;
+.swiper {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  min-height: 200px;
+}
+.swiper .swiper-wrapper {
+  background-color: white;
+}
+.swiper .swiper-wrapper .swiper-slide img {
+  width: 100%;
+  aspect-ratio: 16/9;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+.swiper .swiper-button-next,
+.swiper .swiper-button-prev {
+  top: 92%;
+  color: black;
+  font-weight: bolder;
+  position: relative;
+  padding-top: 3px;
+}
+.swiper .swiper-button-prev {
+  margin-right: auto;
+  height: 50px;
+  width: 50px;
+}
+.swiper .swiper-button-next {
+  margin-left: auto;
+  height: 50px;
+  width: 50px;
 }
 
 /*# sourceMappingURL=style-index.css.map*/

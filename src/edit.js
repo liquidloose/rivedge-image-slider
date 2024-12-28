@@ -1,58 +1,45 @@
 import { __ } from '@wordpress/i18n'
+import { useState } from "@wordpress/element"
 import { InspectorControls, useBlockProps, MediaUpload, MediaUploadCheck } from '@wordpress/block-editor'
 import { Panel, PanelBody, Button, TextControl, SelectControl } from '@wordpress/components'
-import { useState, useEffect } from '@wordpress/element'
-import { Pagination, Navigation, Autoplay, Scrollbar, A11y, EffectFade, EffectCards, EffectCreative } from 'swiper/modules'
+import { Navigation, Pagination, Scrollbar, A11y, EffectCoverflow } from 'swiper/modules'
 import { Swiper, SwiperSlide } from 'swiper/react'
-
-import 'swiper/css'
-import 'swiper/css/navigation'
-import 'swiper/css/pagination'
-import 'swiper/css/scrollbar'
-import 'swiper/css/autoplay'
-import 'swiper/css/effect-fade'
-import 'swiper/css/effect-flip'
-
 import './editor.scss'
 
 export default function Edit({ attributes, setAttributes }) {
+	const blockProps = useBlockProps()
 	const { mediaURL, mediaID, slideCount } = attributes
 	const [text, setText] = useState('')
 	const [select, setSelect] = useState('a')
-	const [media, setMedia] = useState(null)
 
 	const ALLOWED_MEDIA_TYPES = ['image', 'video', 'audio']
 
-	useEffect(() => {
-		if (media) {
-			setAttributes({ mediaURL: media.url, mediaID: media.id })
-		}
-	}, [media])
-
 	const onSelectMedia = (media) => {
-		setMedia(media)
+		setAttributes({ mediaURL: media.url })
 	}
 
 	return (
 		<>
-			<div {...useBlockProps()}>
+			<div {...blockProps}>
 				<Swiper
-					modules={[Pagination, Navigation, EffectCreative, EffectCards, EffectFade, Autoplay, Navigation, Pagination, Scrollbar, A11y]}
-					effect="flip"
-					spaceBetween={50}
-					autoplay={{ delay: 3000, disableOnInteraction: false }}
-					slidesPerView={1}
-					navigation
-					tag={'section'}
+					modules={[EffectCoverflow, Navigation, Pagination, Scrollbar, A11y]}
+					effect={'coverflow'}
+					grabCursor={true}
+					centeredSlides={true}
+					slidesPerView={'auto'}
+					coverflowEffect={{
+						rotate: 50,
+						stretch: 0,
+						depth: 100,
+						modifier: 1,
+						slideShadows: true,
+					}}
+					navigation={true}
 					pagination={{ clickable: true }}
-					scrollbar={{ draggable: true }}
-					onSwiper={(swiper) => console.log(swiper)}
-					onSlideChange={() => console.log('slide change')}
 				>
+					<SwiperSlide>
 
-					{!media ?
-
-						<SwiperSlide>
+						{mediaURL ? <img src={mediaURL} alt="" /> :
 							<MediaUploadCheck>
 								<MediaUpload
 									onSelect={onSelectMedia}
@@ -64,11 +51,40 @@ export default function Edit({ attributes, setAttributes }) {
 									)}
 								/>
 							</MediaUploadCheck>
-							
-						</SwiperSlide>
+						}
+					</SwiperSlide>
+					<SwiperSlide>
 
-						: <img src={attributes.mediaURL} alt="" />}
+						{mediaURL ? <img src={mediaURL} alt="" /> :
+							<MediaUploadCheck>
+								<MediaUpload
+									onSelect={onSelectMedia}
+									allowedTypes={ALLOWED_MEDIA_TYPES}
+									render={({ open }) => (
+										<Button onClick={open}>
+											Open Media Library
+										</Button>
+									)}
+								/>
+							</MediaUploadCheck>
+						}
+					</SwiperSlide>
+					<SwiperSlide>
 
+						{mediaURL ? <img src={mediaURL} alt="" /> :
+							<MediaUploadCheck>
+								<MediaUpload
+									onSelect={onSelectMedia}
+									allowedTypes={ALLOWED_MEDIA_TYPES}
+									render={({ open }) => (
+										<Button onClick={open}>
+											Open Media Library
+										</Button>
+									)}
+								/>
+							</MediaUploadCheck>
+						}
+					</SwiperSlide>
 				</Swiper>
 			</div>
 

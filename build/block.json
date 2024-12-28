@@ -10,11 +10,31 @@
   "example": {},
   "attributes": {
     "slideCount": {
-      "type": "integer"
+      "type": "integer",
+      "default": 2
+    },
+    "mediaUrl": {
+      "type": "string",
+      "default": ""
     }
   },
   "supports": {
-    "html": false
+    "html": false,
+    "lock": true,
+    "renaming": true,
+    "align": true,
+    "shadow": true,
+    "color": {
+      "background": true,
+      "enableContrastChecker": true,
+      "gradients": true,
+      "text": true
+    },
+    "spacing": {
+      "margin": true,
+      "padding": true,
+      "blockGap": true
+    }
   },
   "textdomain": "swiper-slider-block",
   "editorScript": "file:./index.js",
