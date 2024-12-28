@@ -6,16 +6,22 @@ import { Navigation, Pagination, Scrollbar, A11y, EffectCoverflow } from 'swiper
 import { Swiper, SwiperSlide } from 'swiper/react'
 import './editor.scss'
 
-export default function Edit({ attributes, setAttributes }) {
+export default function Edit({ attributes, setAttributes, props }) {
 	const blockProps = useBlockProps()
-	const { mediaURL, mediaID, slideCount } = attributes
+	const { mediaURL, slideCount } = attributes
 	const [text, setText] = useState('')
 	const [select, setSelect] = useState('a')
+	console.log("blockProps: ", blockProps)
+	console.log("attributes: ", attributes)
 
 	const ALLOWED_MEDIA_TYPES = ['image', 'video', 'audio']
 
 	const onSelectMedia = (media) => {
+		console.log("media: ", typeof media.url)
+		console.log("blockProps: ", blockProps)
+		console.log("attributes: ", attributes)
 		setAttributes({ mediaURL: media.url })
+
 	}
 
 	return (
@@ -35,11 +41,11 @@ export default function Edit({ attributes, setAttributes }) {
 						slideShadows: true,
 					}}
 					navigation={true}
-					pagination={{ clickable: true }}
+					pagination={true}
 				>
 					<SwiperSlide>
 
-						{mediaURL ? <img src={mediaURL} alt="" /> :
+						{mediaURL ? <img src={attributes.mediaURL} alt="" /> :
 							<MediaUploadCheck>
 								<MediaUpload
 									onSelect={onSelectMedia}
@@ -55,7 +61,7 @@ export default function Edit({ attributes, setAttributes }) {
 					</SwiperSlide>
 					<SwiperSlide>
 
-						{mediaURL ? <img src={mediaURL} alt="" /> :
+						{mediaURL ? <img src={attributes.mediaURL} alt="" /> :
 							<MediaUploadCheck>
 								<MediaUpload
 									onSelect={onSelectMedia}
@@ -71,7 +77,7 @@ export default function Edit({ attributes, setAttributes }) {
 					</SwiperSlide>
 					<SwiperSlide>
 
-						{mediaURL ? <img src={mediaURL} alt="" /> :
+						{mediaURL ? <img src={attributes.mediaURL} alt="" /> :
 							<MediaUploadCheck>
 								<MediaUpload
 									onSelect={onSelectMedia}

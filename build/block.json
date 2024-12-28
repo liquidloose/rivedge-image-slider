@@ -9,13 +9,8 @@
   "description": "A Gutenberg wrapper for swiper.js",
   "example": {},
   "attributes": {
-    "slideCount": {
-      "type": "integer",
-      "default": 2
-    },
-    "mediaUrl": {
-      "type": "string",
-      "default": ""
+    "mediaURL": {
+      "type": "string"
     }
   },
   "supports": {
