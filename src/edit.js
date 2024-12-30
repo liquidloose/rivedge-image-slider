@@ -2,9 +2,12 @@ import { __ } from '@wordpress/i18n'
 import { useState } from "@wordpress/element"
 import { InspectorControls, useBlockProps, MediaUpload, MediaUploadCheck } from '@wordpress/block-editor'
 import { Panel, PanelBody, Button, TextControl, SelectControl } from '@wordpress/components'
-import { Navigation, Pagination, Scrollbar, A11y, EffectCoverflow } from 'swiper/modules'
+import { Navigation, Pagination, A11y } from 'swiper/modules'
 import { Swiper, SwiperSlide } from 'swiper/react'
 import './editor.scss'
+import 'swiper/css'
+import 'swiper/css/pagination';
+
 
 export default function Edit({ attributes, setAttributes, props }) {
 	const blockProps = useBlockProps()
@@ -28,20 +31,13 @@ export default function Edit({ attributes, setAttributes, props }) {
 		<>
 			<div {...blockProps}>
 				<Swiper
-					modules={[EffectCoverflow, Navigation, Pagination, Scrollbar, A11y]}
-					effect={'coverflow'}
-					grabCursor={true}
-					centeredSlides={true}
-					slidesPerView={'auto'}
-					coverflowEffect={{
-						rotate: 50,
-						stretch: 0,
-						depth: 100,
-						modifier: 1,
-						slideShadows: true,
+					className="mySwiper"
+					pagination={{
+						dynamicBullets: true,
 					}}
+					modules={[Pagination, A11y, Navigation]}
+					slidesPerView={1}
 					navigation={true}
-					pagination={true}
 				>
 					<SwiperSlide>
 

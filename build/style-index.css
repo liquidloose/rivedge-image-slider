@@ -21,6 +21,7 @@
   aspect-ratio: 16/9;
   -o-object-fit: cover;
      object-fit: cover;
+  margin-bottom: -5px;
 }
 .swiper .swiper-button-next,
 .swiper .swiper-button-prev {
@@ -28,7 +29,8 @@
   color: black;
   font-weight: bolder;
   position: relative;
-  padding-top: 3px;
+  padding-top: 4px;
+  padding-bottom: 2px;
 }
 .swiper .swiper-button-prev {
   margin-right: auto;
@@ -39,6 +41,24 @@
   margin-left: auto;
   height: 50px;
   width: 50px;
+}
+
+.swiper .swiper-button-next {
+  position: absolute !important;
+  bottom: -1px !important;
+  top: unset;
+}
+
+.swiper-pagination-fraction,
+.swiper-pagination-custom,
+.swiper-horizontal > .swiper-pagination-bullets,
+.swiper-pagination-bullets.swiper-pagination-horizontal {
+  bottom: 22px !important;
+}
+
+.swiper-pagination-bullet-active {
+  opacity: var(--swiper-pagination-bullet-opacity, 1);
+  background: black !important;
 }
 
 /*# sourceMappingURL=style-index.css.map*/

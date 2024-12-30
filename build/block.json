@@ -23,7 +23,7 @@
       "background": true,
       "enableContrastChecker": true,
       "gradients": true,
-      "text": true
+      "text": false
     },
     "spacing": {
       "margin": true,
