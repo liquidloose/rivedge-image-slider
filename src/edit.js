@@ -1,19 +1,24 @@
 import { __ } from '@wordpress/i18n'
-import { useState } from "@wordpress/element"
 import { InspectorControls, useBlockProps, MediaUpload, MediaUploadCheck } from '@wordpress/block-editor'
-import { Panel, PanelBody, Button, TextControl, SelectControl } from '@wordpress/components'
+import {
+	Panel, PanelBody, Button, CustomSelectControl, __experimentalToggleGroupControl as ToggleGroupControl,
+	__experimentalToggleGroupControlOption as ToggleGroupControlOption, ColorPalette, AnglePickerControl
+} from '@wordpress/components'
 import { Navigation, Pagination, A11y } from 'swiper/modules'
 import { Swiper, SwiperSlide } from 'swiper/react'
 import './editor.scss'
 import 'swiper/css'
-import 'swiper/css/pagination';
+import 'swiper/css/pagination'
+import {
+	__experimentalSpacer as Spacer,
+	__experimentalHeading as Heading,
+	__experimentalView as View,
+} from '@wordpress/components';
 
-
-export default function Edit({ attributes, setAttributes, props }) {
+export default function Edit({ attributes, setAttributes }) {
 	const blockProps = useBlockProps()
 	const { mediaURL, slideCount } = attributes
-	const [text, setText] = useState('')
-	const [select, setSelect] = useState('a')
+
 	console.log("blockProps: ", blockProps)
 	console.log("attributes: ", attributes)
 
@@ -27,9 +32,40 @@ export default function Edit({ attributes, setAttributes, props }) {
 
 	}
 
+	const options = [
+		{
+			key: 1,
+			name: 1,
+			style: { fontSize: '150%' },
+		},
+		{
+			key: 2,
+			name: 2,
+			style: { fontSize: '150%' },
+		},
+		{
+			key: 3,
+			name: 3,
+			style: { fontSize: '150%' },
+		},
+		{
+			key: 4,
+			name: 4,
+			style: { fontSize: '150%' },
+		},
+		{
+			key: 5,
+			name: 5,
+			style: { fontSize: '150%' },
+		},
+	];
+
 	return (
 		<>
 			<div {...blockProps}>
+
+
+
 				<Swiper
 					className="mySwiper"
 					pagination={{
@@ -47,7 +83,7 @@ export default function Edit({ attributes, setAttributes, props }) {
 									onSelect={onSelectMedia}
 									allowedTypes={ALLOWED_MEDIA_TYPES}
 									render={({ open }) => (
-										<Button onClick={open}>
+										<Button className='is-primary' onClick={open}>
 											Open Media Library
 										</Button>
 									)}
@@ -89,54 +125,86 @@ export default function Edit({ attributes, setAttributes, props }) {
 					</SwiperSlide>
 				</Swiper>
 			</div>
-
+			<div></div>
 			<InspectorControls>
+				<Spacer>
+					<Heading>WordPress.org</Heading>
+				</Spacer>
 				<Panel>
 					<PanelBody>
 						<h2>{__('This is a heading for the PluginSidebar example.')}</h2>
 						<p>{__('This is some example text for the PluginSidebar example.')}</p>
-						<TextControl
+
+
+						<CustomSelectControl
+							__next40pxDefaultSize
+							label="Number of Slides"
+							options={options}
+							onChange={({ selectedItem }) => setFontSize(selectedItem)}
+						/>
+
+						<ToggleGroupControl
+							label="Autoplay"
+							value="off"
+							isBlock
 							__nextHasNoMarginBottom
 							__next40pxDefaultSize
-							label={__('Text Control')}
-							value={text}
-							onChange={(newText) => setText(newText)}
-						/>
-						<SelectControl
-							label={__('Select Control')}
-							value={select}
-							options={[
-								{ value: 'a', label: 'Option A' },
-								{ value: 'b', label: 'Option B' },
-								{ value: 'c', label: 'Option C' },
+						>
+							<ToggleGroupControlOption value="off" label="off" />
+							<ToggleGroupControlOption value="on" label="on" />
+						</ToggleGroupControl>
+
+						<ColorPalette
+							asButtons={true}
+							clearable={true}
+							colors={[
+								{
+									color: '#2596be',
+									name: 'Base'
+								},
+								{
+									color: '#081c2c',
+									name: 'Contrast'
+								},
+								{
+									color: '#111111',
+									name: 'Accent 1'
+								}
 							]}
-							onChange={(newSelect) => setSelect(newSelect)}
+							onChange={() => { }}
 						/>
-						<Button variant="primary">{__('Primary Button')}</Button>
+						<ColorPalette
+							asButtons={true}
+							colors={[
+								{
+									color: '#f00',
+									name: 'Red'
+								},
+								{
+									color: '#fff',
+									name: 'White'
+								},
+								{
+									color: '#00f',
+									name: 'Blue'
+								}
+							]}
+							onChange={() => { }}
+						/>
+
+
+
+
+
 					</PanelBody>
+
+
 				</Panel>
 				<Panel>
 					<PanelBody>
 						<h2>{__('This is a heading for the PluginSidebar example.')}</h2>
 						<p>{__('This is some example text for the PluginSidebar example.')}</p>
-						<TextControl
-							__nextHasNoMarginBottom
-							__next40pxDefaultSize
-							label={__('Text Control')}
-							value={text}
-							onChange={(newText) => setText(newText)}
-						/>
-						<SelectControl
-							label={__('Select Control')}
-							value={select}
-							options={[
-								{ value: 'a', label: 'Option A' },
-								{ value: 'b', label: 'Option B' },
-								{ value: 'c', label: 'Option C' },
-							]}
-							onChange={(newSelect) => setSelect(newSelect)}
-						/>
-						<Button variant="primary">{__('Primary Button')}</Button>
+
 					</PanelBody>
 				</Panel>
 			</InspectorControls>

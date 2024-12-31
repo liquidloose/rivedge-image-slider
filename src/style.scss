@@ -5,17 +5,15 @@
  * Replace them with your own styles or remove the file completely.
  */
 
-.swiper.swiper-initialized.swiper-horizontal.swiper-backface-hidden {
-}
 
 .swiper {
 	display: flex;
 	flex-wrap: wrap;
 	width: 100%;
-	min-height: 200px;
 	.swiper-wrapper {
-		background-color: white;
 		.swiper-slide {
+			.components-button {
+			}
 			img {
 				width: 100%;
 				aspect-ratio: 16/9;
@@ -28,6 +26,7 @@
 	.swiper-button-next,
 	.swiper-button-prev {
 		top: 92%;
+		margin-top: 1px;
 		color: black;
 		font-weight: bolder;
 		position: relative;
@@ -37,7 +36,7 @@
 
 	.swiper-button-prev {
 		margin-right: auto;
-		height: 50px;
+		height: 55px;
 		width: 50px;
 	}
 
@@ -50,7 +49,7 @@
 
 .swiper .swiper-button-next {
 	position: absolute !important;
-	bottom: -1px !important;
+	bottom: 3px !important;
 	top: unset;
 }
 
@@ -61,8 +60,21 @@
 	bottom: 22px !important;
 }
 
-
 .swiper-pagination-bullet-active {
-    opacity: var(--swiper-pagination-bullet-opacity, 1);
-    background: black !important;
+	opacity: var(--swiper-pagination-bullet-opacity, 1);
+	background: black !important;
+}
+
+@media only screen and (max-height: 200px) {
+	.swiper {
+		background-color: gray;
+	}
+}
+
+.swiper.swiper-initialized {
+    background: #d3d3d34f;
+}
+
+.swiper-pagination.swiper-pagination-bullets.swiper-pagination-horizontal.swiper-pagination-bullets-dynamic {
+    display: flex;
 }

@@ -19,16 +19,24 @@
     "renaming": true,
     "align": true,
     "shadow": true,
+    "className": true,
+    "background": {
+      "backgroundImage": true,
+      "backgroundSize": true
+    },
     "color": {
       "background": true,
       "enableContrastChecker": true,
       "gradients": true,
       "text": false
     },
+    "filter": {
+      "duotone": false
+    },
     "spacing": {
       "margin": true,
       "padding": true,
-      "blockGap": true
+      "blockGap": false
     }
   },
   "textdomain": "swiper-slider-block",
