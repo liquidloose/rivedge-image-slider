@@ -1,6 +1,7 @@
 <?php
+
 /**
- * Plugin Name:       Rivedge Swiper Slider Block
+ * Plugin Name:       TFG Swiper Slider Block
  * Description:       A Gutenberg wrapper for swiper.js
  * Requires at least: 6.6
  * Requires PHP:      7.2

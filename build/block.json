@@ -11,6 +11,35 @@
   "attributes": {
     "mediaURL": {
       "type": "string"
+    },
+    "mediaURL2": {
+      "type": "string"
+    },
+    "mediaURL3": {
+      "type": "string"
+    },
+    "mediaURL4": {
+      "type": "string"
+    },
+    "mediaURL5": {
+      "type": "string"
+    },
+    "numOfSlides": {
+      "type": "integer"
+    },
+    "autoplay": {
+      "type": "string",
+      "default": "False"
+    },
+    "dynamicBullets": {
+      "type": "string",
+      "default": "False"
+    },
+    "paginationColor": {
+      "type": "string"
+    },
+    "bulletColor": {
+      "type": "string"
     }
   },
   "supports": {
