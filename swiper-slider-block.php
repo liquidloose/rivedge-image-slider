@@ -29,3 +29,15 @@ function rivedge_swiper_slider_block_block_init() {
 	register_block_type( __DIR__ . '/build' );
 }
 add_action( 'init', 'rivedge_swiper_slider_block_block_init' );
+
+
+/**
+ * Enqueue content assets but only in the Editor.
+ */
+function example_enqueue_editor_content_assets() {
+	wp_enqueue_script(
+		'responsive-js-script',
+		plugins_url('responsive.js', __FILE__)
+	);
+}
+add_action('enqueue_block_assets', 'example_enqueue_editor_content_assets');

@@ -6,9 +6,9 @@ import {
 } from '@wordpress/components'
 import { Navigation, Pagination, A11y } from 'swiper/modules'
 import { Swiper, SwiperSlide } from 'swiper/react'
-import { usestate } from 'react'
 import './editor.scss'
 import 'swiper/css'
+import 'swiper/css/navigation'
 import 'swiper/css/pagination'
 import {
 	__experimentalSpacer as Spacer,
@@ -20,22 +20,16 @@ import { useEffect } from 'react'
 import { useState } from 'react'
 
 export default function Edit({ attributes, setAttributes }) {
-	console.log("rendering")
 	const [reRender, setReRender] = useState(false)
 	const blockProps = useBlockProps()
-	const { mediaURL, slideCount } = attributes
+	const { mediaURL1, slideCount } = attributes
 	const colors = useSelect((select) => select('core/block-editor').getSettings().colors, [])
 
-	console.log("blockProps: ", blockProps)
-	console.log("attributes: ", attributes)
 
 	const ALLOWED_MEDIA_TYPES = ['image', 'video', 'audio']
 
 	const onSelectMedia = (media, index) => {
-		console.log("media: ", typeof media.url)
-		console.log("blockProps: ", blockProps)
-		console.log("attributes: ", attributes)
-		setAttributes({ mediaURL: media.url })
+		setAttributes({ mediaURL1: media.url })
 
 	}
 
@@ -62,9 +56,10 @@ export default function Edit({ attributes, setAttributes }) {
 		},
 	]
 
+	const slides = []
+
 	useEffect(() => {
 		setReRender(!reRender)
-		console.log('reRendering')
 	}, [attributes])
 
 	return (
@@ -90,21 +85,22 @@ export default function Edit({ attributes, setAttributes }) {
 
 			<div {...blockProps}>
 				<Swiper
-					className="mySwiper"
+					className="is-style-basic-swiper"
+					navigation={true}
 					pagination={{
 						dynamicBullets: attributes.dynamicBullets === "False" ? false : true,
-						clickable: true
+						clickable: true,
+
 					}}
 					modules={[Pagination, A11y, Navigation]}
 					slidesPerView={1}
-					navigation={true}
 					spaceBetween={50}
 				>
 					<SwiperSlide>
-						{mediaURL ? <img src={attributes.mediaURL} alt="" /> :
+						{mediaURL1 ? <img src={attributes.mediaURL1} alt="" /> :
 							<MediaUploadCheck>
 								<MediaUpload
-									onSelect={(media) => onSelectMedia(media, 1)}
+									onSelect={(media) => onSelectMedia(media)}
 									allowedTypes={ALLOWED_MEDIA_TYPES}
 									render={({ open }) => (
 										<Button className='is-primary' onClick={open}>
@@ -116,13 +112,13 @@ export default function Edit({ attributes, setAttributes }) {
 						}
 					</SwiperSlide>
 					<SwiperSlide>
-						{mediaURL ? <img src={attributes.mediaURL} alt="" /> :
+						{mediaURL1 ? <img src={attributes.mediaURL1} alt="" /> :
 							<MediaUploadCheck>
 								<MediaUpload
-									onSelect={onSelectMedia}
+									onSelect={(media) => onSelectMedia(media)}
 									allowedTypes={ALLOWED_MEDIA_TYPES}
 									render={({ open }) => (
-										<Button onClick={open}>
+										<Button className='is-primary' onClick={open}>
 											Open Media Library
 										</Button>
 									)}
@@ -130,22 +126,7 @@ export default function Edit({ attributes, setAttributes }) {
 							</MediaUploadCheck>
 						}
 					</SwiperSlide>
-					<SwiperSlide>
 
-						{mediaURL ? <img src={attributes.mediaURL} alt="" /> :
-							<MediaUploadCheck>
-								<MediaUpload
-									onSelect={onSelectMedia}
-									allowedTypes={ALLOWED_MEDIA_TYPES}
-									render={({ open }) => (
-										<Button onClick={open}>
-											Open Media Library
-										</Button>
-									)}
-								/>
-							</MediaUploadCheck>
-						}
-					</SwiperSlide>
 				</Swiper>
 			</div>
 			<div></div>

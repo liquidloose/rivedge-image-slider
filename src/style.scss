@@ -5,15 +5,45 @@
  * Replace them with your own styles or remove the file completely.
  */
 
+.is-style-basic-swiper .swiper {
+	--swiper-pagination-color: var(--swiper-theme-color);
+	--swiper-pagination-left: auto;
+	--swiper-pagination-right: 8px;
+	--swiper-pagination-bottom: 8px;
+	--swiper-pagination-top: auto;
+	--swiper-pagination-fraction-color: inherit;
+	--swiper-pagination-progressbar-bg-color: rgba(0, 0, 0, 0.25);
+	--swiper-pagination-progressbar-size: 4px;
+	--swiper-pagination-bullet-size: 8px;
+	--swiper-pagination-bullet-width: 8px;
+	--swiper-pagination-bullet-height: 8px;
+	--swiper-pagination-bullet-inactive-color: #000;
+	--swiper-pagination-bullet-inactive-opacity: 0.2;
+	--swiper-pagination-bullet-opacity: 1;
+	--swiper-pagination-bullet-horizontal-gap: 4px;
+	--swiper-pagination-bullet-vertical-gap: 6px;
 
-.swiper {
 	display: flex;
 	flex-wrap: wrap;
 	width: 100%;
 	.swiper-wrapper {
 		.swiper-slide {
-			.components-button {
+			img {
+				width: 100%;
+				aspect-ratio: 16/9;
+				object-fit: cover;
+				margin-bottom: -5px;
 			}
+		}
+	}
+}
+
+.is-style-bottom-nav .swiper {
+	display: flex;
+	flex-wrap: wrap;
+	width: 100%;
+	.swiper-wrapper {
+		.swiper-slide {
 			img {
 				width: 100%;
 				aspect-ratio: 16/9;
@@ -30,8 +60,8 @@
 		color: black;
 		font-weight: bolder;
 		position: relative;
-		padding-top: 4px;
-		padding-bottom: 2px;
+		padding-top: 10px;
+		padding-bottom: 5px;
 	}
 
 	.swiper-button-prev {
@@ -42,39 +72,95 @@
 
 	.swiper-button-next {
 		margin-left: auto;
-		height: 50px;
+		height: 55px;
 		width: 50px;
 	}
-}
 
-.swiper .swiper-button-next {
-	position: absolute !important;
-	bottom: 3px !important;
-	top: unset;
-}
+	.swiper .swiper-button-next {
+		position: absolute !important;
+		bottom: 3px !important;
+		top: unset;
+	}
 
-.swiper-pagination-fraction,
-.swiper-pagination-custom,
-.swiper-horizontal > .swiper-pagination-bullets,
-.swiper-pagination-bullets.swiper-pagination-horizontal {
-	bottom: 22px !important;
-}
+	.swiper-pagination-fraction,
+	.swiper-pagination-custom,
+	.swiper-horizontal > .swiper-pagination-bullets,
+	.swiper-pagination-bullets.swiper-pagination-horizontal {
+		bottom: 22px !important;
+	}
 
-.swiper-pagination-bullet-active {
-	opacity: var(--swiper-pagination-bullet-opacity, 1);
-	background: black !important;
-}
+	.swiper-pagination-bullet-active {
+		opacity: var(--swiper-pagination-bullet-opacity, 1);
+		background: black !important;
+	}
 
-@media only screen and (max-height: 200px) {
-	.swiper {
-		background-color: gray;
+	.swiper-pagination.swiper-pagination-bullets.swiper-pagination-horizontal.swiper-pagination-bullets-dynamic {
+		display: flex;
 	}
 }
 
-.swiper.swiper-initialized {
-    background: #d3d3d34f;
-}
+.is-style-scale-hero .swiper {
+	--swiper-navigation-top-offset: 93%;
+	--swiper-navigation-size: 20px;
 
-.swiper-pagination.swiper-pagination-bullets.swiper-pagination-horizontal.swiper-pagination-bullets-dynamic {
-    display: flex;
+	display: flex;
+	flex-wrap: wrap;
+	width: 100%;
+	.swiper-wrapper {
+		.swiper-slide {
+			img {
+				width: 100%;
+				aspect-ratio: 16/9;
+				object-fit: cover;
+				margin-bottom: -5px;
+			}
+		}
+	}
+
+	.swiper-button-prev {
+		left: calc(100% - 150px);
+	}
+
+	.swiper-pagination-bullets {
+		top: 91%;
+	}
+
+	.swiper-button-next {
+		right: 0px;
+	}
+
+	.swiper-button-prev,
+	.swiper-button-next {
+		min-height: 52px;
+		top: calc(100% - 42px);
+		width: 75px;
+		border-left: white solid 1px;
+	}
+
+	.swiper-button-prev:hover,
+	.swiper-button-next:hover,
+	.swiper-button-prev.swiper-button-disabled:hover,
+	.swiper-button-next.swiper-button-disabled:hover {
+		cursor: grab;
+		background: white;
+		opacity: 1;
+		color: black;
+	}
+
+	.swiper-button-prev.responsive-slider {
+		left: 0px;
+		border-left: white solid 0px !important;
+		border-right: white solid 1px;
+	}
+
+	.swiper-pagination.swiper-pagination-clickable.swiper-pagination-bullets.swiper-pagination-horizontal {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		position: absolute;
+		top: auto;
+		bottom: 0px;
+		border-top: #ffffff solid 2px;
+		min-height: 51px;
+	}
 }

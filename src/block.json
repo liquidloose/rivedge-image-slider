@@ -9,7 +9,7 @@
 	"description": "A Gutenberg wrapper for swiper.js",
 	"example": {},
 	"attributes": {
-		"mediaURL": {
+		"mediaURL1": {
 			"type": "string"
 		},
 		"mediaURL2": {
@@ -68,6 +68,23 @@
 			"blockGap": false
 		}
 	},
+	"styles": [
+		{
+			"name": "basic-swiper",
+			"label": "Basic Swiper",
+			"isDefault": true
+		},
+		{
+			"name": "bottom-nav",
+			"label": "Bottom Nav",
+			"isDefault": false
+		},
+		{
+			"name": "scale-hero",
+			"label": "Scale Hero",
+			"isDefault": false
+		}
+	],
 	"textdomain": "swiper-slider-block",
 	"editorScript": "file:./index.js",
 	"editorStyle": "file:./index.css",
