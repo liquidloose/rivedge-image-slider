@@ -5,6 +5,18 @@
  * Replace them with your own styles or remove the file completely.
  */
 
+
+ .swiper-slide.swiper-slide-active {
+	min-height: 80px;
+	height: 100%;
+	background-color: white;
+}
+
+.swiper-slide button.components-button.is-primary {
+    margin-top: 1%;
+    margin-left: 5%;
+}
+
 .is-style-basic-swiper .swiper {
 	--swiper-pagination-color: var(--swiper-theme-color);
 	--swiper-pagination-left: auto;
@@ -107,6 +119,9 @@
 	flex-wrap: wrap;
 	width: 100%;
 	.swiper-wrapper {
+
+		
+
 		.swiper-slide {
 			img {
 				width: 100%;
@@ -164,3 +179,5 @@
 		min-height: 51px;
 	}
 }
+
+

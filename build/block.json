@@ -25,7 +25,8 @@
       "type": "string"
     },
     "numOfSlides": {
-      "type": "integer"
+      "type": "integer",
+      "default": 2
     },
     "autoplay": {
       "type": "string",

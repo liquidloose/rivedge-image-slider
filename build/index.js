@@ -52,14 +52,52 @@ function Edit({
   const blockProps = (0,_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.useBlockProps)();
   const {
     mediaURL1,
+    mediaURL2,
+    mediaURL3,
+    mediaURL4,
+    mediaURL5,
     slideCount
   } = attributes;
   const colors = (0,_wordpress_data__WEBPACK_IMPORTED_MODULE_9__.useSelect)(select => select('core/block-editor').getSettings().colors, []);
   const ALLOWED_MEDIA_TYPES = ['image', 'video', 'audio'];
+  console.log("attributes: ", attributes);
+  console.log("attributes.numOfSlides: ", attributes.numOfSlides);
   const onSelectMedia = (media, index) => {
-    setAttributes({
-      mediaURL1: media.url
-    });
+    console.log('You selected this media: ', media);
+    switch (index) {
+      case 1:
+        console.log("mediaURL1", mediaURL1);
+        setAttributes({
+          mediaURL1: media.url
+        });
+        break;
+      case 2:
+        console.log("mediaURL2", mediaURL2);
+        setAttributes({
+          mediaURL2: media.url
+        });
+        break;
+      case 3:
+        console.log("mediaURL3", mediaURL3);
+        setAttributes({
+          mediaURL3: media.url
+        });
+        break;
+      case 4:
+        console.log("mediaURL4", mediaURL4);
+        setAttributes({
+          mediaURL4: media.url
+        });
+        break;
+      case 5:
+        console.log("mediaURL5", mediaURL5);
+        setAttributes({
+          mediaURL5: media.url
+        });
+        break;
+      default:
+        console.log('Something wrong happened.');
+    }
   };
   const options = [{
     key: 2,
@@ -90,6 +128,53 @@ function Edit({
   (0,react__WEBPACK_IMPORTED_MODULE_10__.useEffect)(() => {
     setReRender(!reRender);
   }, [attributes]);
+  function generateSlides() {
+    const limit = attributes.numOfSlides;
+    const slides = [];
+    let slideMap = {
+      1: attributes.mediaURL1,
+      2: attributes.mediaURL2,
+      3: attributes.mediaURL3,
+      4: attributes.mediaURL4,
+      5: attributes.mediaURL5
+    };
+    console.log('hey what is going on?');
+    for (let i = 0; i < limit; i++) {
+      console.log(`Iteration number: ${i + 1}`);
+      let iterationNumber = i + 1;
+      console.log("typeof: ", typeof iterationNumber);
+      console.log("attributes.iterationNumber: ", slideMap[iterationNumber]);
+
+      // If this specific slide doesn't have a value, then return the SwiperSlide with the MediaUpload components in it
+      // If it does have a value, then return the value in an img tag: <img src={attributes.mediaURL1} alt="" />
+
+      if (slideMap[iterationNumber]) {
+        slides.push(/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)(swiper_react__WEBPACK_IMPORTED_MODULE_4__.SwiperSlide, {
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("img", {
+            src: slideMap[iterationNumber],
+            alt: "Image for presentation in slider"
+          })
+        }));
+      } else {
+        slides.push(/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)(swiper_react__WEBPACK_IMPORTED_MODULE_4__.SwiperSlide, {
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.MediaUploadCheck, {
+            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.MediaUpload, {
+              onSelect: media => onSelectMedia(media, i + 1),
+              allowedTypes: ALLOWED_MEDIA_TYPES,
+              render: ({
+                open
+              }) => /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.Button, {
+                className: "is-primary",
+                onClick: open,
+                children: "Open Media Library"
+              })
+            })
+          }, i)
+        }));
+      }
+    }
+    return slides;
+  }
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.Fragment, {
     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("style", {
       children: `
@@ -111,7 +196,7 @@ function Edit({
 			`
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("div", {
       ...blockProps,
-      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsxs)(swiper_react__WEBPACK_IMPORTED_MODULE_4__.Swiper, {
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)(swiper_react__WEBPACK_IMPORTED_MODULE_4__.Swiper, {
         className: "is-style-basic-swiper",
         navigation: true,
         pagination: {
@@ -121,43 +206,9 @@ function Edit({
         modules: [swiper_modules__WEBPACK_IMPORTED_MODULE_3__.Pagination, swiper_modules__WEBPACK_IMPORTED_MODULE_3__.A11y, swiper_modules__WEBPACK_IMPORTED_MODULE_3__.Navigation],
         slidesPerView: 1,
         spaceBetween: 50,
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)(swiper_react__WEBPACK_IMPORTED_MODULE_4__.SwiperSlide, {
-          children: mediaURL1 ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("img", {
-            src: attributes.mediaURL1,
-            alt: ""
-          }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.MediaUploadCheck, {
-            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.MediaUpload, {
-              onSelect: media => onSelectMedia(media),
-              allowedTypes: ALLOWED_MEDIA_TYPES,
-              render: ({
-                open
-              }) => /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.Button, {
-                className: "is-primary",
-                onClick: open,
-                children: "Open Media Library"
-              })
-            })
-          })
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)(swiper_react__WEBPACK_IMPORTED_MODULE_4__.SwiperSlide, {
-          children: mediaURL1 ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("img", {
-            src: attributes.mediaURL1,
-            alt: ""
-          }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.MediaUploadCheck, {
-            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.MediaUpload, {
-              onSelect: media => onSelectMedia(media),
-              allowedTypes: ALLOWED_MEDIA_TYPES,
-              render: ({
-                open
-              }) => /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.Button, {
-                className: "is-primary",
-                onClick: open,
-                children: "Open Media Library"
-              })
-            })
-          })
-        })]
+        children: generateSlides()
       })
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("div", {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsxs)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.InspectorControls, {
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsxs)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.InspectorControls, {
       children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.Panel, {
         children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsxs)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.PanelBody, {
           children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("h2", {
@@ -11652,7 +11703,7 @@ SwiperSlide.displayName = 'SwiperSlide';
   \************************/
 /***/ ((module) => {
 
-module.exports = /*#__PURE__*/JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":3,"name":"rivedge/swiper-slider-block","version":"0.1.0","title":"Rivedge Swiper Slider Block","category":"widgets","icon":"smiley","description":"A Gutenberg wrapper for swiper.js","example":{},"attributes":{"mediaURL1":{"type":"string"},"mediaURL2":{"type":"string"},"mediaURL3":{"type":"string"},"mediaURL4":{"type":"string"},"mediaURL5":{"type":"string"},"numOfSlides":{"type":"integer"},"autoplay":{"type":"string","default":"False"},"dynamicBullets":{"type":"string","default":"False"},"paginationColor":{"type":"string"},"bulletColor":{"type":"string"}},"supports":{"html":false,"lock":true,"renaming":true,"align":true,"shadow":true,"className":true,"background":{"backgroundImage":true,"backgroundSize":true},"color":{"background":true,"enableContrastChecker":true,"gradients":true,"text":false},"filter":{"duotone":false},"spacing":{"margin":true,"padding":true,"blockGap":false}},"styles":[{"name":"basic-swiper","label":"Basic Swiper","isDefault":true},{"name":"bottom-nav","label":"Bottom Nav","isDefault":false},{"name":"scale-hero","label":"Scale Hero","isDefault":false}],"textdomain":"swiper-slider-block","editorScript":"file:./index.js","editorStyle":"file:./index.css","style":"file:./style-index.css","render":"file:./render.php","viewScript":"file:./view.js"}');
+module.exports = /*#__PURE__*/JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":3,"name":"rivedge/swiper-slider-block","version":"0.1.0","title":"Rivedge Swiper Slider Block","category":"widgets","icon":"smiley","description":"A Gutenberg wrapper for swiper.js","example":{},"attributes":{"mediaURL1":{"type":"string"},"mediaURL2":{"type":"string"},"mediaURL3":{"type":"string"},"mediaURL4":{"type":"string"},"mediaURL5":{"type":"string"},"numOfSlides":{"type":"integer","default":2},"autoplay":{"type":"string","default":"False"},"dynamicBullets":{"type":"string","default":"False"},"paginationColor":{"type":"string"},"bulletColor":{"type":"string"}},"supports":{"html":false,"lock":true,"renaming":true,"align":true,"shadow":true,"className":true,"background":{"backgroundImage":true,"backgroundSize":true},"color":{"background":true,"enableContrastChecker":true,"gradients":true,"text":false},"filter":{"duotone":false},"spacing":{"margin":true,"padding":true,"blockGap":false}},"styles":[{"name":"basic-swiper","label":"Basic Swiper","isDefault":true},{"name":"bottom-nav","label":"Bottom Nav","isDefault":false},{"name":"scale-hero","label":"Scale Hero","isDefault":false}],"textdomain":"swiper-slider-block","editorScript":"file:./index.js","editorStyle":"file:./index.css","style":"file:./style-index.css","render":"file:./render.php","viewScript":"file:./view.js"}');
 
 /***/ })
 
