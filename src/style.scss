@@ -159,7 +159,8 @@
 		cursor: grab;
 		background: white;
 		opacity: 1;
-		color: black;
+		color: black !important;
+		font-weight: bold;
 	}
 
 	.swiper-button-prev.responsive-slider {
@@ -178,6 +179,25 @@
 		border-top: #ffffff solid 2px;
 		min-height: 51px;
 	}
+}
+
+.close-swiper {
+    position: absolute;
+    margin-left: calc(100% - 50px);
+    background-color: black;
+    color: white;
+    height: 50px;
+    width: 50px;
+    display: flex
+;
+    justify-content: center;
+    align-items: center;
+}
+
+.close-swiper:hover {
+	cursor: grab;
+	background-color: white;
+	color: black;
 }
 
 

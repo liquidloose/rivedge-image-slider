@@ -149,11 +149,50 @@ function Edit({
       // If it does have a value, then return the value in an img tag: <img src={attributes.mediaURL1} alt="" />
 
       if (slideMap[iterationNumber]) {
-        slides.push(/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)(swiper_react__WEBPACK_IMPORTED_MODULE_4__.SwiperSlide, {
-          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("img", {
+        slides.push(/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsxs)(swiper_react__WEBPACK_IMPORTED_MODULE_4__.SwiperSlide, {
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.Button, {
+            className: "close-swiper",
+            onClick: () => {
+              console.log('hello world');
+              setAttributes({
+                mediaURL1: ""
+              });
+              switch (iterationNumber) {
+                case 1:
+                  setAttributes({
+                    mediaURL1: ""
+                  });
+                  break;
+                case 2:
+                  setAttributes({
+                    mediaURL2: ""
+                  });
+                  break;
+                case 3:
+                  setAttributes({
+                    mediaURL3: ""
+                  });
+                  break;
+                case 4:
+                  setAttributes({
+                    mediaURL4: ""
+                  });
+                  break;
+                case 5:
+                  setAttributes({
+                    mediaURL5: ""
+                  });
+                  break;
+                default:
+                  console.log("what's up, y'all???");
+                  break;
+              }
+            },
+            children: "X"
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("img", {
             src: slideMap[iterationNumber],
             alt: "Image for presentation in slider"
-          })
+          })]
         }));
       } else {
         slides.push(/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)(swiper_react__WEBPACK_IMPORTED_MODULE_4__.SwiperSlide, {

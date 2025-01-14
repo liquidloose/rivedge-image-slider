@@ -62,7 +62,6 @@ export default function Edit({ attributes, setAttributes }) {
 				console.log('Something wrong happened.')
 		}
 
-
 	}
 
 	const options = [
@@ -122,6 +121,35 @@ export default function Edit({ attributes, setAttributes }) {
 
 				slides.push(
 					<SwiperSlide>
+						<Button
+							className='close-swiper'
+							onClick={() => {
+								console.log('hello world')
+								setAttributes({ mediaURL1: "" })
+								switch (iterationNumber) {
+									case 1:
+										setAttributes({ mediaURL1: "" })
+										break
+									case 2:
+										setAttributes({ mediaURL2: "" })
+										break
+									case 3:
+										setAttributes({ mediaURL3: "" })
+										break
+									case 4:
+										setAttributes({ mediaURL4: "" })
+										break
+									case 5:
+										setAttributes({ mediaURL5: "" })
+										break
+									default:
+										console.log("what's up, y'all???")
+										break
+								}
+							}}
+						>
+							X
+						</Button>
 						<img src={slideMap[iterationNumber]} alt="Image for presentation in slider" />
 					</SwiperSlide>
 				)
