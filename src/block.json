@@ -28,9 +28,13 @@
 			"type": "integer",
 			"default": 2
 		},
-		"autoplay": {
+		"swiperAutoplay": {
 			"type": "string",
 			"default": "False"
+		},
+		"swiperDelay": {
+			"type": "integer",
+			"default": 5000
 		},
 		"dynamicBullets": {
 			"type": "string",

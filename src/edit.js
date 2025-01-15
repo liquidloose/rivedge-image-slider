@@ -4,7 +4,7 @@ import {
 	Panel, PanelBody, Button, CustomSelectControl, __experimentalToggleGroupControl as ToggleGroupControl,
 	__experimentalToggleGroupControlOption as ToggleGroupControlOption, ColorPalette
 } from '@wordpress/components'
-import { Navigation, Pagination, A11y } from 'swiper/modules'
+import { Navigation, Pagination, A11y, Autoplay } from 'swiper/modules'
 import { Swiper, SwiperSlide } from 'swiper/react'
 import './editor.scss'
 import 'swiper/css'
@@ -22,7 +22,7 @@ import { useState } from 'react'
 export default function Edit({ attributes, setAttributes }) {
 	const [reRender, setReRender] = useState(false)
 	const blockProps = useBlockProps()
-	const { mediaURL1, mediaURL2, mediaURL3, mediaURL4, mediaURL5, slideCount } = attributes
+	const { mediaURL1, mediaURL2, mediaURL3, mediaURL4, mediaURL5, numOfSlides, swiperDelay, swiperAutoplay } = attributes
 	const colors = useSelect((select) => select('core/block-editor').getSettings().colors, [])
 
 
@@ -95,7 +95,7 @@ export default function Edit({ attributes, setAttributes }) {
 
 
 	function generateSlides() {
-		const limit = attributes.numOfSlides
+		const limit = numOfSlides
 		const slides = []
 
 		let slideMap = {
@@ -207,9 +207,15 @@ export default function Edit({ attributes, setAttributes }) {
 						dynamicBullets: attributes.dynamicBullets === "False" ? false : true,
 						clickable: true,
 					}}
-					modules={[Pagination, A11y, Navigation]}
+					modules={[Pagination, A11y, Navigation, Autoplay]}
 					slidesPerView={1}
 					spaceBetween={50}
+					autoplay={swiperAutoplay === "True" ? {
+						delay: swiperDelay,
+						disableOnInteraction: false,
+					} : false
+
+					}
 				>
 					{generateSlides()}
 
@@ -234,8 +240,8 @@ export default function Edit({ attributes, setAttributes }) {
 
 						<ToggleGroupControl
 							label="Autoplay"
-							onChange={() => setAttributes({ autoplay: attributes.autoplay === "False" ? "True" : "False" })}
-							value={attributes.autoplay}
+							onChange={() => setAttributes({ swiperAutoplay: swiperAutoplay === "False" ? "True" : "False" })}
+							value={swiperAutoplay}
 							isBlock
 							__nextHasNoMarginBottom
 							__next40pxDefaultSize

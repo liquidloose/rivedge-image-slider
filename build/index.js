@@ -56,7 +56,9 @@ function Edit({
     mediaURL3,
     mediaURL4,
     mediaURL5,
-    slideCount
+    numOfSlides,
+    swiperDelay,
+    swiperAutoplay
   } = attributes;
   const colors = (0,_wordpress_data__WEBPACK_IMPORTED_MODULE_9__.useSelect)(select => select('core/block-editor').getSettings().colors, []);
   const ALLOWED_MEDIA_TYPES = ['image', 'video', 'audio'];
@@ -129,7 +131,7 @@ function Edit({
     setReRender(!reRender);
   }, [attributes]);
   function generateSlides() {
-    const limit = attributes.numOfSlides;
+    const limit = numOfSlides;
     const slides = [];
     let slideMap = {
       1: attributes.mediaURL1,
@@ -242,9 +244,13 @@ function Edit({
           dynamicBullets: attributes.dynamicBullets === "False" ? false : true,
           clickable: true
         },
-        modules: [swiper_modules__WEBPACK_IMPORTED_MODULE_3__.Pagination, swiper_modules__WEBPACK_IMPORTED_MODULE_3__.A11y, swiper_modules__WEBPACK_IMPORTED_MODULE_3__.Navigation],
+        modules: [swiper_modules__WEBPACK_IMPORTED_MODULE_3__.Pagination, swiper_modules__WEBPACK_IMPORTED_MODULE_3__.A11y, swiper_modules__WEBPACK_IMPORTED_MODULE_3__.Navigation, swiper_modules__WEBPACK_IMPORTED_MODULE_3__.Autoplay],
         slidesPerView: 1,
         spaceBetween: 50,
+        autoplay: swiperAutoplay === "True" ? {
+          delay: swiperDelay,
+          disableOnInteraction: false
+        } : false,
         children: generateSlides()
       })
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsxs)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.InspectorControls, {
@@ -267,9 +273,9 @@ function Edit({
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsxs)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.__experimentalToggleGroupControl, {
             label: "Autoplay",
             onChange: () => setAttributes({
-              autoplay: attributes.autoplay === "False" ? "True" : "False"
+              swiperAutoplay: swiperAutoplay === "False" ? "True" : "False"
             }),
-            value: attributes.autoplay,
+            value: swiperAutoplay,
             isBlock: true,
             __nextHasNoMarginBottom: true,
             __next40pxDefaultSize: true,
@@ -11742,7 +11748,7 @@ SwiperSlide.displayName = 'SwiperSlide';
   \************************/
 /***/ ((module) => {
 
-module.exports = /*#__PURE__*/JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":3,"name":"rivedge/swiper-slider-block","version":"0.1.0","title":"Rivedge Swiper Slider Block","category":"widgets","icon":"smiley","description":"A Gutenberg wrapper for swiper.js","example":{},"attributes":{"mediaURL1":{"type":"string"},"mediaURL2":{"type":"string"},"mediaURL3":{"type":"string"},"mediaURL4":{"type":"string"},"mediaURL5":{"type":"string"},"numOfSlides":{"type":"integer","default":2},"autoplay":{"type":"string","default":"False"},"dynamicBullets":{"type":"string","default":"False"},"paginationColor":{"type":"string"},"bulletColor":{"type":"string"}},"supports":{"html":false,"lock":true,"renaming":true,"align":true,"shadow":true,"className":true,"background":{"backgroundImage":true,"backgroundSize":true},"color":{"background":true,"enableContrastChecker":true,"gradients":true,"text":false},"filter":{"duotone":false},"spacing":{"margin":true,"padding":true,"blockGap":false}},"styles":[{"name":"basic-swiper","label":"Basic Swiper","isDefault":true},{"name":"bottom-nav","label":"Bottom Nav","isDefault":false},{"name":"scale-hero","label":"Scale Hero","isDefault":false}],"textdomain":"swiper-slider-block","editorScript":"file:./index.js","editorStyle":"file:./index.css","style":"file:./style-index.css","render":"file:./render.php","viewScript":"file:./view.js"}');
+module.exports = /*#__PURE__*/JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":3,"name":"rivedge/swiper-slider-block","version":"0.1.0","title":"Rivedge Swiper Slider Block","category":"widgets","icon":"smiley","description":"A Gutenberg wrapper for swiper.js","example":{},"attributes":{"mediaURL1":{"type":"string"},"mediaURL2":{"type":"string"},"mediaURL3":{"type":"string"},"mediaURL4":{"type":"string"},"mediaURL5":{"type":"string"},"numOfSlides":{"type":"integer","default":2},"swiperAutoplay":{"type":"string","default":"False"},"swiperDelay":{"type":"integer","default":5000},"dynamicBullets":{"type":"string","default":"False"},"paginationColor":{"type":"string"},"bulletColor":{"type":"string"}},"supports":{"html":false,"lock":true,"renaming":true,"align":true,"shadow":true,"className":true,"background":{"backgroundImage":true,"backgroundSize":true},"color":{"background":true,"enableContrastChecker":true,"gradients":true,"text":false},"filter":{"duotone":false},"spacing":{"margin":true,"padding":true,"blockGap":false}},"styles":[{"name":"basic-swiper","label":"Basic Swiper","isDefault":true},{"name":"bottom-nav","label":"Bottom Nav","isDefault":false},{"name":"scale-hero","label":"Scale Hero","isDefault":false}],"textdomain":"swiper-slider-block","editorScript":"file:./index.js","editorStyle":"file:./index.css","style":"file:./style-index.css","render":"file:./render.php","viewScript":"file:./view.js"}');
 
 /***/ })
 
