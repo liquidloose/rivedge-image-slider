@@ -1,5 +1,5 @@
 import { __ } from '@wordpress/i18n'
-import { InspectorControls, useBlockProps, MediaUpload, MediaUploadCheck } from '@wordpress/block-editor'
+import { InspectorControls, useBlockProps, MediaUpload, MediaUploadCheck, __experimentalUnitControl as UnitControl } from '@wordpress/block-editor'
 import {
 	Panel, PanelBody, Button, CustomSelectControl, __experimentalToggleGroupControl as ToggleGroupControl,
 	__experimentalToggleGroupControlOption as ToggleGroupControlOption, ColorPalette
@@ -228,7 +228,6 @@ export default function Edit({ attributes, setAttributes }) {
 				<Panel>
 					<PanelBody>
 						<h2>{__('Slider Settings')}</h2>
-						<p>{__('Click "save" and then refresh the browser. Then the changes to the settings in this panel will be seen.')}</p>
 
 						<CustomSelectControl
 							__next40pxDefaultSize
@@ -250,6 +249,18 @@ export default function Edit({ attributes, setAttributes }) {
 							<ToggleGroupControlOption value="True" label="True" />
 						</ToggleGroupControl>
 
+						<UnitControl
+							disableUnits
+							label="Swiper Delay (in seconds)"
+							onChange={(seconds) => {
+								let trimSeconds = seconds.replace("px", "")
+								console.log(trimSeconds)
+								setAttributes({ swiperDelay: Number(trimSeconds) * 1000 })
+							}}
+							onUnitChange={() => { }}
+							value={swiperDelay / 1000}
+						/>
+
 						<ToggleGroupControl
 							label="Dynamic Bullets"
 							onChange={() => setAttributes({ dynamicBullets: attributes.dynamicBullets === "False" ? "True" : "False" })}
@@ -261,10 +272,10 @@ export default function Edit({ attributes, setAttributes }) {
 							<ToggleGroupControlOption value="False" label="False" />
 							<ToggleGroupControlOption value="True" label="True" />
 						</ToggleGroupControl>
-
+						<p>*Must save and refresh browser to see changes to the bullets</p>
 					</PanelBody>
 				</Panel>
-				<Panel>
+				<Panel className='swiper-second-panel'>
 					<PanelBody>
 						<h2>{__('Slider Styles')}</h2>
 

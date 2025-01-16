@@ -258,8 +258,6 @@ function Edit({
         children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsxs)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.PanelBody, {
           children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("h2", {
             children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Slider Settings')
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("p", {
-            children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Click "save" and then refresh the browser. Then the changes to the settings in this panel will be seen.')
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.CustomSelectControl, {
             __next40pxDefaultSize: true,
             label: "Number of Slides",
@@ -286,6 +284,18 @@ function Edit({
               value: "True",
               label: "True"
             })]
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.__experimentalUnitControl, {
+            disableUnits: true,
+            label: "Swiper Delay (in seconds)",
+            onChange: seconds => {
+              let trimSeconds = seconds.replace("px", "");
+              console.log(trimSeconds);
+              setAttributes({
+                swiperDelay: Number(trimSeconds) * 1000
+              });
+            },
+            onUnitChange: () => {},
+            value: swiperDelay / 1000
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsxs)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.__experimentalToggleGroupControl, {
             label: "Dynamic Bullets",
             onChange: () => setAttributes({
@@ -302,9 +312,12 @@ function Edit({
               value: "True",
               label: "True"
             })]
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("p", {
+            children: "*Must save and refresh browser to see changes to the bullets"
           })]
         })
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.Panel, {
+        className: "swiper-second-panel",
         children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsxs)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.PanelBody, {
           children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("h2", {
             children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Slider Styles')
@@ -11748,7 +11761,7 @@ SwiperSlide.displayName = 'SwiperSlide';
   \************************/
 /***/ ((module) => {
 
-module.exports = /*#__PURE__*/JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":3,"name":"rivedge/swiper-slider-block","version":"0.1.0","title":"Rivedge Swiper Slider Block","category":"widgets","icon":"smiley","description":"A Gutenberg wrapper for swiper.js","example":{},"attributes":{"mediaURL1":{"type":"string"},"mediaURL2":{"type":"string"},"mediaURL3":{"type":"string"},"mediaURL4":{"type":"string"},"mediaURL5":{"type":"string"},"numOfSlides":{"type":"integer","default":2},"swiperAutoplay":{"type":"string","default":"False"},"swiperDelay":{"type":"integer","default":5000},"dynamicBullets":{"type":"string","default":"False"},"paginationColor":{"type":"string"},"bulletColor":{"type":"string"}},"supports":{"html":false,"lock":true,"renaming":true,"align":true,"shadow":true,"className":true,"background":{"backgroundImage":true,"backgroundSize":true},"color":{"background":true,"enableContrastChecker":true,"gradients":true,"text":false},"filter":{"duotone":false},"spacing":{"margin":true,"padding":true,"blockGap":false}},"styles":[{"name":"basic-swiper","label":"Basic Swiper","isDefault":true},{"name":"bottom-nav","label":"Bottom Nav","isDefault":false},{"name":"scale-hero","label":"Scale Hero","isDefault":false}],"textdomain":"swiper-slider-block","editorScript":"file:./index.js","editorStyle":"file:./index.css","style":"file:./style-index.css","render":"file:./render.php","viewScript":"file:./view.js"}');
+module.exports = /*#__PURE__*/JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":3,"name":"rivedge/swiper-slider-block","version":"0.1.0","title":"Rivedge Swiper Slider Block","category":"widgets","icon":"smiley","description":"A Gutenberg wrapper for swiper.js","example":{},"attributes":{"mediaURL1":{"type":"string"},"mediaURL2":{"type":"string"},"mediaURL3":{"type":"string"},"mediaURL4":{"type":"string"},"mediaURL5":{"type":"string"},"numOfSlides":{"type":"integer","default":2},"swiperAutoplay":{"type":"string","default":"False"},"swiperDelay":{"type":"integer","default":2000},"dynamicBullets":{"type":"string","default":"False"},"paginationColor":{"type":"string"},"bulletColor":{"type":"string"}},"supports":{"html":false,"lock":true,"renaming":true,"align":true,"shadow":true,"className":true,"background":{"backgroundImage":true,"backgroundSize":true},"color":{"background":true,"enableContrastChecker":true,"gradients":true,"text":false},"filter":{"duotone":false},"spacing":{"margin":true,"padding":true,"blockGap":false}},"styles":[{"name":"basic-swiper","label":"Basic Swiper","isDefault":true},{"name":"bottom-nav","label":"Bottom Nav","isDefault":false},{"name":"scale-hero","label":"Scale Hero","isDefault":false}],"textdomain":"swiper-slider-block","editorScript":"file:./index.js","editorStyle":"file:./index.css","style":"file:./style-index.css","render":"file:./render.php","viewScript":"file:./view.js"}');
 
 /***/ })
 

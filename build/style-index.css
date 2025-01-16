@@ -73,11 +73,15 @@
   margin-right: auto;
   height: 55px;
   width: 50px;
+  left: 30%;
+  right: auto;
 }
 .is-style-bottom-nav .swiper .swiper-button-next {
   margin-left: auto;
   height: 55px;
   width: 50px;
+  right: 30%;
+  left: auto;
 }
 .is-style-bottom-nav .swiper .swiper .swiper-button-next {
   position: absolute !important;

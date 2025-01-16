@@ -34,7 +34,7 @@
 		},
 		"swiperDelay": {
 			"type": "integer",
-			"default": 5000
+			"default": 2000
 		},
 		"dynamicBullets": {
 			"type": "string",

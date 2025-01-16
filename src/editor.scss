@@ -24,9 +24,13 @@ section.swiper.swiper-initialized.swiper-horizontal {
 */
 
 .components-panel {
-    height: 405px;
+    height: 485px;
 }
 
 .components-input-control__container {
     margin-bottom: 20px;
+}
+
+.swiper-second-panel.components-panel {
+    height: 318px;
 }

@@ -26,11 +26,15 @@ section.swiper.swiper-initialized.swiper-horizontal {
 
 */
 .components-panel {
-  height: 405px;
+  height: 485px;
 }
 
 .components-input-control__container {
   margin-bottom: 20px;
+}
+
+.swiper-second-panel.components-panel {
+  height: 318px;
 }
 /*!************************************************************************************************************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[2].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[2].use[2]!./node_modules/swiper/swiper.css ***!
