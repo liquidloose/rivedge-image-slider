@@ -100,6 +100,7 @@
 }
 .is-style-bottom-nav .swiper .swiper-pagination.swiper-pagination-bullets.swiper-pagination-horizontal.swiper-pagination-bullets-dynamic {
   display: flex;
+  justify-content: center;
 }
 
 .is-style-scale-hero .swiper {
@@ -146,7 +147,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  border-top: white solid 2px !important;
+  border-top: white solid !important;
   bottom: 0;
   z-index: 1;
 }
@@ -164,6 +165,7 @@
   bottom: 0px;
   border-top: #ffffff solid 2px;
   min-height: 51px;
+  width: 100% !important;
 }
 
 .close-swiper {
@@ -184,10 +186,10 @@
   color: black;
 }
 
-.is-style-bottom-nav.swiper .swiper-pagination-fraction,
-.is-style-bottom-nav.swiper .swiper-pagination-custom,
-.is-style-bottom-nav.swiper .swiper-horizontal > .swiper-pagination-bullets,
-.is-style-bottom-nav.swiper .swiper-pagination-bullets.swiper-pagination-horizontal {
+.is-style-bottom-nav .swiper .swiper-pagination-fraction,
+.is-style-bottom-nav .swiper .swiper-pagination-custom,
+.is-style-bottom-nav .swiper .swiper-horizontal > .swiper-pagination-bullets,
+.is-style-bottom-nav .swiper .swiper-pagination-bullets.swiper-pagination-horizontal {
   bottom: 25px !important;
 }
 

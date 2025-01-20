@@ -24,6 +24,8 @@ export default function Edit({ attributes, setAttributes }) {
 	const blockProps = useBlockProps()
 	const { mediaURL1, mediaURL2, mediaURL3, mediaURL4, mediaURL5, numOfSlides, swiperDelay, swiperAutoplay } = attributes
 	const colors = useSelect((select) => select('core/block-editor').getSettings().colors, [])
+	const settings = useSelect((select) => select('core/block-editor').getSettings(), [])
+	console.log('settings: ', settings)
 
 
 	const ALLOWED_MEDIA_TYPES = ['image', 'video', 'audio']
@@ -32,6 +34,7 @@ export default function Edit({ attributes, setAttributes }) {
 
 
 	console.log("attributes.numOfSlides: ", attributes.numOfSlides)
+
 
 	const onSelectMedia = (media, index) => {
 

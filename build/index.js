@@ -61,6 +61,8 @@ function Edit({
     swiperAutoplay
   } = attributes;
   const colors = (0,_wordpress_data__WEBPACK_IMPORTED_MODULE_9__.useSelect)(select => select('core/block-editor').getSettings().colors, []);
+  const settings = (0,_wordpress_data__WEBPACK_IMPORTED_MODULE_9__.useSelect)(select => select('core/block-editor').getSettings(), []);
+  console.log('settings: ', settings);
   const ALLOWED_MEDIA_TYPES = ['image', 'video', 'audio'];
   console.log("attributes: ", attributes);
   console.log("attributes.numOfSlides: ", attributes.numOfSlides);

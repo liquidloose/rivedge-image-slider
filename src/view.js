@@ -22,7 +22,7 @@
 
 /* eslint-disable no-console */
 console.log( 'Hello World! (from rivedge-swiper-slider-block block)' );
-/* eslint-enable no-console */
+/* eslint-enable no-console
 
 
 
@@ -35,3 +35,4 @@ function addResponsiveStyles() {
 }
 
 sliderWindow.addEventListener('resize', addResponsiveStyles())
+ */

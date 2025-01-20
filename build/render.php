@@ -30,6 +30,7 @@
 	}
 </style>
 
+<?php print_r($attributes); ?>
 
 <div class="swiper <?= $attributes['className'] ?> ">
 
