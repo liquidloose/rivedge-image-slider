@@ -49,7 +49,7 @@
 	}
 }
 
-.is-style-bottom-nav .swiper {
+.is-style-bottom-nav.swiper {
 	display: flex;
 	flex-wrap: wrap;
 	width: 100%;
@@ -115,7 +115,7 @@
 	}
 }
 
-.is-style-scale-hero .swiper {
+.is-style-scale-hero.swiper {
 	--swiper-navigation-top-offset: 93%;
 	--swiper-navigation-size: 20px;
 
