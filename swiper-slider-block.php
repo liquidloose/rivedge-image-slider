@@ -41,3 +41,21 @@ function example_enqueue_editor_content_assets() {
 	);
 }
 add_action('enqueue_block_assets', 'example_enqueue_editor_content_assets');
+
+/**
+ * Enqueue CDN script and style for the front end
+ */
+function your_plugin_enqueue_scripts() {
+	wp_enqueue_script('swiper-cdn', 'https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js', array(), null, true);
+	wp_enqueue_style('swiper-cdn-style', 'https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css', array(), null);
+}
+add_action('wp_enqueue_scripts', 'your_plugin_enqueue_scripts');
+
+/**
+ * Enqueue CDN script and style for the block editor
+ */
+function your_plugin_enqueue_block_editor_assets() {
+	wp_enqueue_script('swiper-cdn', 'https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js', array(), null, true);
+	wp_enqueue_style('swiper-cdn-style', 'https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css', array(), null);
+}
+add_action('enqueue_block_editor_assets', 'your_plugin_enqueue_block_editor_assets');
