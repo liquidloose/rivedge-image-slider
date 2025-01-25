@@ -18,7 +18,7 @@
   margin-right: 5%;
 }
 
-.is-style-basic-swiper.swiper {
+.is-style-basic-swiper .swiper {
   --swiper-pagination-color: var(--swiper-theme-color);
   --swiper-pagination-left: auto;
   --swiper-pagination-right: 8px;
@@ -39,7 +39,7 @@
   flex-wrap: wrap;
   width: 100%;
 }
-.is-style-basic-swiper.swiper .swiper-wrapper .swiper-slide img {
+.is-style-basic-swiper .swiper .swiper-wrapper .swiper-slide img {
   width: 100%;
   aspect-ratio: 16/9;
   -o-object-fit: cover;
