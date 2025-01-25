@@ -1,12 +1,12 @@
 <?php
 
 /**
- * Plugin Name:       TFG Swiper Slider Block
+ * Plugin Name:       Rivedge Swiper Slider Block
  * Description:       A Gutenberg wrapper for swiper.js
  * Requires at least: 6.6
  * Requires PHP:      7.2
  * Version:           0.1.0
- * Author:            The WordPress Contributors
+ * Author:            River's Edge Web Development
  * License:           GPL-2.0-or-later
  * License URI:       https://www.gnu.org/licenses/gpl-2.0.html
  * Text Domain:       swiper-slider-block
@@ -34,11 +34,14 @@ add_action( 'init', 'rivedge_swiper_slider_block_block_init' );
 /**
  * Enqueue content assets but only in the Editor.
  */
+
 function example_enqueue_editor_content_assets() {
 	wp_enqueue_script(
 		'responsive-js-script',
 		plugins_url('responsive.js', __FILE__)
 	);
+	wp_enqueue_script('swiper-cdn', 'https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js', array(), null, true);
+	wp_enqueue_style('swiper-cdn-style', 'https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css', array(), null);
 }
 add_action('enqueue_block_assets', 'example_enqueue_editor_content_assets');
 

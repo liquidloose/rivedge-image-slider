@@ -22,21 +22,26 @@
 
 /* eslint-disable no-console */
 console.log('Hello World! (from rivedge-swiper-slider-block block)')
-/* eslint-enable no-console 
+/* eslint-enable no-console*/
 
-document.addEventListener('ready', () => {
+
+function addResponsiveStyles() {
 
     let sliderWindow = document.querySelector('.is-style-scale-hero')
+    let sliderWidth = sliderWindow ? sliderWindow.offsetWidth : 0
+    let previousArrow = document.querySelector('.is-style-scale-hero .swiper .swiper-button-prev')
 
-    function addResponsiveStyles() {
-
-        let sliderWidth = sliderWindow.offsetWidth
+    if (sliderWidth && sliderWidth < 350) {
         console.log('what is the width?')
-        let previousArrow = document.querySelector('.is-style-scale-hero .swiper .swiper-button-prev')
-        previousArrow.classList.toggle('responsive-slider')
+        previousArrow.classList.add('responsive-slider')
     }
 
-    sliderWindow.addEventListener('resize', addResponsiveStyles())
-})
+    if (sliderWidth && sliderWidth > 350) {
+        previousArrow.classList.remove('responsive-slider')
+    }
 
-*/
+}
+
+window.addEventListener('resize', addResponsiveStyles)
+document.addEventListener('DOMContentLoaded', addResponsiveStyles)
+
